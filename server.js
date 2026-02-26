@@ -7,6 +7,8 @@ import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import { connectDB } from "./config/db.js";
+import indexRoutes from "./routes/index.routes.js";
+import errorMiddleware from "./middlewares/error.middleware.js";
 
 // Initialize express app
 const app = express();
@@ -33,9 +35,13 @@ app.use(helmet());
 // ========================
 // Routes
 // ========================
+app.use("/api/v1", indexRoutes); // Mount API routes under /api/v1
 app.get("/", (req, res) => {
     res.status(200).json({ message: "API is running..." });
 });
+
+app.use(errorMiddleware);
+
 
 // ========================
 // Start Server

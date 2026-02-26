@@ -6,8 +6,7 @@ const connectDB = async () => {
         console.log("✅ Database connected successfully");
     } catch (error) {
         console.error("❌ Database connection failed:", error.message);
-    }finally{
-        sequelize.close();
+        process.exit(1); // Exit if DB connection fails — no point running without a DB
     }
 };
 

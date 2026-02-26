@@ -1,5 +1,5 @@
 
-# Run all pending migrations
+# Run all pending migrations 
 
 npx sequelize-cli db:migrate
 
